@@ -1,0 +1,11 @@
+Produto:          Id/Código/Nome/Descricao/Custo/ValorVenda/CategoriaId/FornecedorId  V
+CategoriaProduto: Id/Nome                                                             V
+Fornecedor:  	  Id/Nome/CNPJ/Telefone/Email/Endereco                                V
+Cliente:          Id/Nome/CPF/Endereco/Telefone/e-mail/Dtnasc                         V                      
+Vendas:           Id/VendaTotId/Valor/Desconto/ProdutoId/Quantidade                   V
+VendasTot:        Id/Dt/Hr/ValorTotal/ClienteId/Desconto/PagamentoId/VendedorId       V
+TipoPagamento:    Id/Descricao                                                        V
+Usuário:          Id/Nome/Cpf/Cargo/PerfilId/Senha                                    V
+Perfil:           Id/Nome                                                             V
+PermissoesPerfil: Id/PerfilId/Permissao                                               V
+Estoque:          Id/ProdutoId/Localizacao/Quantidade                                 V
