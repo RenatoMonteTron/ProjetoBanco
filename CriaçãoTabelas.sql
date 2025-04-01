@@ -1,3 +1,4 @@
+-- Criando Tabela Produto
 CREATE TABLE Produto (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Codigo VARCHAR(50) NOT NULL UNIQUE,
@@ -11,21 +12,25 @@ CREATE TABLE Produto (
     CONSTRAINT fk_produto_fornecedor FOREIGN KEY (FornecedorId) REFERENCES Fornecedor(Id) ON DELETE RESTRICT
 );
 
+-- Criando Tabela CategoriaProduto
 CREATE TABLE CategoriaProduto (
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR(100) NOT NULL UNIQUE
+    Nome VARCHAR(100) PRIMARY KEY NOT NULL UNIQUE
 );
 
+-- Criando Tabela Perfil
 CREATE TABLE Perfil (
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR(100) NOT NULL UNIQUE
+    Nome VARCHAR(100) PRIMARY KEY NOT NULL UNIQUE
 );
 
+-- Criando Tabela TipoPagamento
 CREATE TABLE TipoPagamento (
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    Descricao VARCHAR(100) NOT NULL UNIQUE
+    Descricao VARCHAR(100) PRIMARY KEY NOT NULL UNIQUE
 );
 
+-- Criando Tabela Estoque
 CREATE TABLE Estoque (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     ProdutoId INT NOT NULL UNIQUE,
@@ -33,6 +38,7 @@ CREATE TABLE Estoque (
     Quantidade INT NOT NULL
 );
 
+-- Criando Tabela Fornecedor
 CREATE TABLE Fornecedor (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(100) NOT NULL,
@@ -42,6 +48,7 @@ CREATE TABLE Fornecedor (
     Endereco TEXT
 );
 
+-- Criando Tabela Usuario
 CREATE TABLE Usuario (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(100) NOT NULL,
@@ -53,6 +60,7 @@ CREATE TABLE Usuario (
     REFERENCES Perfil(Id) ON DELETE RESTRICT
 );
 
+-- Criando Tabela PermissoesPerfil
 CREATE TABLE PermissoesPerfil (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     PerfilId INT NOT NULL,
@@ -61,6 +69,7 @@ CREATE TABLE PermissoesPerfil (
     REFERENCES Perfil(Id) ON DELETE CASCADE
 );
 
+-- Criando Tabela Cliente
 CREATE TABLE Cliente (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(100) NOT NULL,
@@ -72,7 +81,8 @@ CREATE TABLE Cliente (
     DataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Vendas (
+-- Criando Tabela VendasUnicas
+CREATE TABLE VendasUnicas (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     IdVendasTot INT NOT NULL,
     ProdutoId INT NOT NULL,
@@ -85,6 +95,7 @@ CREATE TABLE Vendas (
     REFERENCES VendasTot(Id) ON DELETE CASCADE
 );
 
+-- Criando Tabela VendasTot
 CREATE TABLE VendasTot (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Dt DATE NOT NULL,
