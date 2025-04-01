@@ -110,3 +110,14 @@ CREATE TABLE VendasTot (
     CONSTRAINT fk_vendasTot_vendedor FOREIGN KEY (IdVendedor) 
     REFERENCES Usuario(Id) ON DELETE RESTRICT
 );
+
+-- Criando Tabela Usuario
+CREATE TABLE PermissaoxPerfil (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    PermissaoId INT NOT NULL,
+    PerfilId INT NOT NULL,
+    CONSTRAINT fk_usuario_permissao FOREIGN KEY (PermissaoId) 
+    REFERENCES Permissoes(Id) ON DELETE CASCADE,
+    CONSTRAINT fk_usuario_perfil FOREIGN KEY (PerfilId) 
+    REFERENCES Perfil(Id) ON DELETE CASCADE
+);
