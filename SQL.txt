@@ -188,19 +188,6 @@ BEGIN
     VALUES (:p_Nome, :p_CNPJ, :p_Telefone, :p_Email, :p_Endereco);
 END
 
-
--- Procedure para pesquisar todas as vendasUnicas ligadas à uma vendaTot
-CREATE PROCEDURE PesquisarVenda(p_idVendaTot INT)
-AS
-BEGIN
-    FOR SELECT v.Id, v.IdVendasTot, p.Nome AS TBLPRODUTOS, v.Quantidade, v.Valor, v.Desconto
-    FROM TBLVENDASUNICAS v
-    JOIN TBLPRODUTOS p ON v.ProdutoId = p.Id
-    WHERE v.IdVendasTot = :p_idVendaTot
-    INTO :Id, :IdVendasTot, :Produto, :Quantidade, :Valor, :Desconto
-    DO SUSPEND; 
-END
-
 -- Triggeres
 
 -- Trigger para criar um estoque de um produto assim que cria o produto
@@ -685,28 +672,6 @@ INSERT INTO TBLVENDASUNICAS (Id, IdVendasTot, Valor, Desconto, ProdutoId, Quanti
 INSERT INTO TBLVENDASUNICAS (Id, IdVendasTot, Valor, Desconto, ProdutoId, Quantidade) VALUES (78, 26, 1650.00, 65.00, 34, 1);
 INSERT INTO TBLVENDASUNICAS (Id, IdVendasTot, Valor, Desconto, ProdutoId, Quantidade) VALUES (79, 27, 360.00, 15.00, 35, 2);
 INSERT INTO TBLVENDASUNICAS (Id, IdVendasTot, Valor, Desconto, ProdutoId, Quantidade) VALUES (80, 28, 1350.00, 55.00, 36, 1);
-
-
--- Relatórios
-
-SELECT Cliente.Nome, VendasTot.ValorTotal
-FROM Cliente
-INNER JOIN VendasTot ON Cliente.Id = VendasTot.ClienteId;
-
-SELECT Cliente.Nome, VendasTot.ValorTotal
-FROM Cliente
-LEFT JOIN VendasTot ON Cliente.Id = VendasTot.ClienteId;
-
-SELECT Cliente.Nome, VendasTot.ValorTotal
-FROM Cliente
-RIGHT JOIN VendasTot ON Cliente.Id = VendasTot.ClienteId;
-
-SELECT Cliente.Nome, VendasTot.ValorTotal
-FROM Cliente
-FULL JOIN VendasTot ON Cliente.Id = VendasTot.ClienteId;
-
-
-
 
 
 
